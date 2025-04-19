@@ -37,10 +37,51 @@ function App()
       setCart([...cart, item])
     }
   }
+
+    function removeFromCart (id) {
+    setCart(prevCart =>  prevCart.filter(guitar => guitar.id !== id)
+    )}
+
+  function increaseQuantity(id){
+    const updatedCart = cart.map (item => {
+      if (item.id === id && item.quantity < 5){
+        return{
+        ...item, quantity: item.quantity + 1
+        }
+      }
+      return item
+    })
+    setCart(updatedCart)
+  }
+
+  function increaseQuantity(id){
+    const updatedCart = cart.map (item => {
+      if (item.id === id && item.quantity < 5){
+        return{
+        ...item, quantity: item.quantity + 1
+        }
+      }
+      return item
+    })
+    setCart(updatedCart)
+  }
+  function decreseQuantity(id){
+    const updatedCart = cart.map (item => {
+      if (item.id === id && item.quantity > 0){
+        return{
+        ...item, quantity: item.quantity - 1
+        }
+      }
+      return item
+    })
+    setCart(updatedCart)
+  }
     return (
         <>
     <Header 
     cart = {cart}
+    removeFromCart = {removeFromCart}
+    increaseQuantity = {increaseQuantityconst}
     />
     <main className="container-xl mt-5">
         <h2 className="text-center">Nuestra Colección</h2>
